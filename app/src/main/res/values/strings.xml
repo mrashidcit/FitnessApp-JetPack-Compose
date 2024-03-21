@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FitnessApp</string>
+    <string name="everybody_can_train">Everybody Can Train</string>
+    <string name="get_started">Get Started</string>
 </resources>

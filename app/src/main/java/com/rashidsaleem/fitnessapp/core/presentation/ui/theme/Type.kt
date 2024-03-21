@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.ui.theme
+package com.rashidsaleem.fitnessapp.core.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

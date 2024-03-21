@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.ui.theme
+package com.rashidsaleem.fitnessapp.core.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
