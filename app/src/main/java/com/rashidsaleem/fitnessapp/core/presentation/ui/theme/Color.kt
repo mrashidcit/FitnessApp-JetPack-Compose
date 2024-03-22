@@ -18,4 +18,6 @@ val Purple2 = Color(0xFFCC8FED)
 val PurpleLinear = listOf<Color>(Purple1, Purple)
 val LogoLinear = listOf<Color>(Blue1, Purple2)
 
+val Black1 = Color(0xFF1D1617)
+
 

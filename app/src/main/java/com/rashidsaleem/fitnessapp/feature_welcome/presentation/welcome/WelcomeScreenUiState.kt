@@ -1,7 +1,7 @@
-package com.rashidsaleem.fitnessapp.feature_welcome.presentation
+package com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome
 
 data class WelcomeScreenUiState(
-        val screen: WelcomeScreenEnum = WelcomeScreenEnum.Screen1,
+    val screen: WelcomeScreenEnum = WelcomeScreenEnum.Screen1,
 )
 
 enum class WelcomeScreenEnum {

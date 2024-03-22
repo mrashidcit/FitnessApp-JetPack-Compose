@@ -2,4 +2,6 @@
     <string name="app_name">FitnessApp</string>
     <string name="everybody_can_train">Everybody Can Train</string>
     <string name="get_started">Get Started</string>
+    <string name="track_you_goal">Track Your Goal</string>
+    <string name="dont_worry_if_you_have_trouble_determining_your_goals">Don\'t worry if you have trouble determining your goals, We can help you determine your goals and track your goals</string>
 </resources>

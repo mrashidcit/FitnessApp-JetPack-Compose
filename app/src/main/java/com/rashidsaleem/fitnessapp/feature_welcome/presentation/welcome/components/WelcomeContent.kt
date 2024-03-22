@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_welcome.presentation.components
+package com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,8 +28,8 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.PurpleLinear
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.poppinsFontFamily
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.WelcomeScreenEnum
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.WelcomeScreenUiState
+import com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.WelcomeScreenEnum
+import com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.WelcomeScreenUiState
 
 @Composable
 fun WelcomeContent(
@@ -101,7 +98,7 @@ fun WelcomeContentPreview() {
         Surface {
             val uiState = remember{
                 WelcomeScreenUiState(
-                    WelcomeScreenEnum.Screen2
+                    WelcomeScreenEnum.Screen1
                 )
             }
             WelcomeContent(uiState)
