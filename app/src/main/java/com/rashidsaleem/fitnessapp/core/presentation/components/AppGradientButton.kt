@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -29,11 +30,11 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.poppinsFontFamily
 
 @Composable
 fun AppGradientButton(
+    modifier: Modifier = Modifier,
     text: String,
     colors: List<Color> = LogoLinear,
     height: Dp = 60.dp,
     shape: Shape = RoundedCornerShape(99.dp),
-    modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     Box(
@@ -45,6 +46,7 @@ fun AppGradientButton(
                 ),
                 shape = shape
             )
+            .clip(shape)
             .clickable { onClick() }
         ,
         contentAlignment = Alignment.Center,

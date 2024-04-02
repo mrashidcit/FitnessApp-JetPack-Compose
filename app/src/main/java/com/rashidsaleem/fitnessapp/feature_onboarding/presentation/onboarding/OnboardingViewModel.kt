@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.common.Routes
+import com.rashidsaleem.fitnessapp.core.presentation.baseScreen.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -17,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(
 
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _scope = viewModelScope
     private val _uiState = MutableStateFlow(OnboardingUiState())
@@ -83,9 +84,7 @@ class OnboardingViewModel @Inject constructor(
                     OnboardingEnum.Onboarding4
                 }
                 OnboardingEnum.Onboarding4 -> {
-                    launch(Dispatchers.Main) {
-                        _eventFlow.emit(UiEvent.NavigateNext(Routes.REGISTRATION_SCREEN_1))
-                    }
+                    navigateNext(Routes.REGISTER_SCREEN_1)
                     return@launch
                 }
             }
@@ -104,7 +103,7 @@ class OnboardingViewModel @Inject constructor(
     }
 
     sealed class UiEvent {
-        data class NavigateNext(val route: String): UiEvent()
+//        data class NavigateNext(val route: String): UiEvent()
     }
 
 }

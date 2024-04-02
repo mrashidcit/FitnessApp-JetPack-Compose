@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewModelScope
 import com.rashidsaleem.fitnessapp.R
+import com.rashidsaleem.fitnessapp.core.common.Routes
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.PurpleLinear
 import com.rashidsaleem.fitnessapp.core.presentation.baseScreen.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -57,11 +58,16 @@ class WelcomeViewModel @Inject constructor(
                     WelcomeScreenEnum.Screen2
                 }
                 WelcomeScreenEnum.Screen2 -> {
-                    launch(Dispatchers.Main) {
-                        _eventFlow.emit()
-                    }
+                    navigateNext(Routes.ONBOARDING)
+                    return@launch
                 }
             }
+
+            updateUiState(
+                screenEnum = nextScreenEnum,
+                logoImage = logoImage,
+                backgroundColor = backgroundColor,
+            )
 
         }
     }

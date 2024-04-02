@@ -4,5 +4,5 @@ object Routes {
 
     const val WELCOME = "welcome"
     const val ONBOARDING = "onboarding"
-    const val REGISTRATION_SCREEN_1 = "registration_screen1"
+    const val REGISTER_SCREEN_1 = "register_screen1"
 }
