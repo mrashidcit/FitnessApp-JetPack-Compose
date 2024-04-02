@@ -10,6 +10,7 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
+val WhiteLinear = listOf<Color>(Color.White, Color.White)
 val Gray1 = Color(0xFFB6B4C2)
 val Blue1 = Color(0xFF6B50F6)
 val Purple = Color(0xFFC150F6)

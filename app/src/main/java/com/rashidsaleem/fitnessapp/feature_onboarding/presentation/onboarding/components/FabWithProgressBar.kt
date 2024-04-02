@@ -1,6 +1,7 @@
-package com.rashidsaleem.fitnessapp.feature_welcome.presentation.onboarding.components
+package com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -25,6 +26,7 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.LogoLinear
 fun FabWithProgressBar(
     modifier: Modifier = Modifier,
     progressValue: Float,
+    onClick: () -> Unit,
 ) {
 
     Box(
@@ -41,6 +43,7 @@ fun FabWithProgressBar(
                     ),
                     shape = CircleShape
                 )
+                .clickable { onClick() }
         ) {
             Icon(
                 modifier = Modifier.align(Alignment.Center),
@@ -73,6 +76,7 @@ fun FabWithProgressBarPreview() {
         ) {
             FabWithProgressBar(
                 progressValue = 0.25f,
+                onClick = { }
             )
         }
     }

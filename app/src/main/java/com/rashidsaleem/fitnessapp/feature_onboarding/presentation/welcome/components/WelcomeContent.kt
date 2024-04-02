@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.components
+package com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,28 +28,24 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.PurpleLinear
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.poppinsFontFamily
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.WelcomeScreenEnum
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.welcome.WelcomeScreenUiState
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.WelcomeEvent
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.WelcomeScreenEnum
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.WelcomeScreenUiState
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.previewWelcomeScreenUiState
 
 @Composable
 fun WelcomeContent(
     uiState: WelcomeScreenUiState,
+    onEvent: (WelcomeEvent) -> Unit,
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .then(
-                when (uiState.screen) {
-                    WelcomeScreenEnum.Screen1 -> Modifier
-                    WelcomeScreenEnum.Screen2 -> {
-                        Modifier.background(
-                            brush = Brush.horizontalGradient(
-                                colors = PurpleLinear
-                            )
-                        )
-                    }
-                }
+            .background(
+            brush = Brush.horizontalGradient(
+                colors = uiState.backgroundColor
             )
+        )
 
     ) {
 
@@ -59,12 +55,7 @@ fun WelcomeContent(
         ) {
             Image(
                 modifier = Modifier.height(54.dp),
-                painter = painterResource(id =
-                    when (uiState.screen) {
-                        WelcomeScreenEnum.Screen1 -> R.drawable.ic_didpoolfit_blue_and_black
-                        WelcomeScreenEnum.Screen2 -> R.drawable.ic_didpoolfit_white_and_black
-                    }
-                ),
+                painter = painterResource(id = uiState.logoImage),
                 contentDescription = null,
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -83,10 +74,9 @@ fun WelcomeContent(
                 .fillMaxWidth()
                 .align(Alignment.BottomEnd)
                 .padding(bottom = 40.dp)
-                .padding(horizontal = 30.dp)
-        ) {
-
-        }
+                .padding(horizontal = 30.dp),
+            onClick = { onEvent(WelcomeEvent.GetStarted) }
+        )
 
     }
 }
@@ -97,11 +87,12 @@ fun WelcomeContentPreview() {
     FitnessAppTheme {
         Surface {
             val uiState = remember{
-                WelcomeScreenUiState(
-                    WelcomeScreenEnum.Screen1
-                )
+                previewWelcomeScreenUiState
             }
-            WelcomeContent(uiState)
+            WelcomeContent(
+                uiState = uiState,
+                onEvent = {}
+                )
         }
     }
 }

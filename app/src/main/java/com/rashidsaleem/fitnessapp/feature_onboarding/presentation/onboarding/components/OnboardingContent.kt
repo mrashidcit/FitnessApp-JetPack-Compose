@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_welcome.presentation.onboarding.components
+package com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -24,12 +24,14 @@ import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.onboarding.OnboardingUiState
-import com.rashidsaleem.fitnessapp.feature_welcome.presentation.onboarding.previewOnboardingUiState
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.OnboardingEvent
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.OnboardingUiState
+import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.previewOnboardingUiState
 
 @Composable
 fun OnboardingContent(
     uiState: OnboardingUiState,
+    onEvent: (OnboardingEvent) -> Unit,
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -41,7 +43,7 @@ fun OnboardingContent(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    painter = painterResource(id = R.drawable.img_onboarding_1),
+                    painter = painterResource(id = uiState.image),
                     contentDescription = null,
                     contentScale = ContentScale.FillWidth
                 )
@@ -49,7 +51,7 @@ fun OnboardingContent(
             Spacer(modifier = Modifier.height(64.dp))
             AppText(
                 modifier = Modifier.padding(horizontal = 30.dp),
-                text = stringResource(id = R.string.track_you_goal),
+                text = stringResource(id = uiState.title),
                 color = Black1,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
@@ -58,7 +60,7 @@ fun OnboardingContent(
             Spacer(modifier = Modifier.height(15.dp))
             AppText(
                 modifier = Modifier.padding(horizontal = 30.dp),
-                text = stringResource(id = R.string.dont_worry_if_you_have_trouble_determining_your_goals),
+                text = stringResource(id = uiState.description),
                 color = Gray1,
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
@@ -73,7 +75,8 @@ fun OnboardingContent(
                     end = 30.dp,
                     bottom = 40.dp,
                 ),
-            progressValue = uiState.progressValue
+            progressValue = uiState.progressValue,
+            onClick = { onEvent(OnboardingEvent.MoveNext) }
         )
     }
 }
@@ -88,7 +91,8 @@ fun OnboardingContentPreview() {
             )
 
             OnboardingContent(
-                uiState = uiState
+                uiState = uiState,
+                onEvent = { }
             )
         }
     }
