@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.core.util
+package com.rashidsaleem.fitnessapp.core.common.util
 
 import android.content.Context
 import androidx.annotation.StringRes
