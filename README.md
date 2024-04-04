@@ -3,15 +3,15 @@
 DIDPOOL Fitness App
 
 <div style="display:flex;">
-  <img alt="App image" src="screenshots/splash.jpg" width="30%">
-  <img alt="App image" src="screenshots/onboarding.jpg" width="30%">
-  <img alt="App image" src="screenshots/signin.jpg" width="30%">
+  <img alt="App image" src="screenshots/01_welcome.jpg" width="30%">
+  <img alt="App image" src="screenshots/01_welcome.jpg" width="30%">
+  <img alt="App image" src="screenshots/03_Onboarding.jpg" width="30%">
 </div>
 
 <div style="display:flex;">
-<img alt="App image" src="screenshots/signup.jpg" width="30%">
-<img alt="App image" src="screenshots/codeVerification.jpg" width="30%">
-<img alt="App image" src="screenshots/" width="30%">
+<img alt="App image" src="screenshots/04_Onboarding.jpg" width="30%">
+<img alt="App image" src="screenshots/05_Onboarding.jpg" width="30%">
+<img alt="App image" src="screenshots/06_Onboarding.jpg" width="30%">
 </div>
 
 
