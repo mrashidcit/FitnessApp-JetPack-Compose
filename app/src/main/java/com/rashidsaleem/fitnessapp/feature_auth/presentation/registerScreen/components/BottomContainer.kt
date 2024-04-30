@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -34,10 +34,12 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray4
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Purple1
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
 
 @Composable
 fun BottomContainer(
     modifier: Modifier = Modifier,
+    onEvent: (RegisterEvent) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -47,7 +49,9 @@ fun BottomContainer(
             text = stringResource(id = R.string.register),
             modifier = Modifier
                 .fillMaxWidth(),
-            onClick = {  }
+            onClick = {
+                onEvent(RegisterEvent.RegisterOnClick)
+            }
         )
         Spacer(modifier = Modifier.height(20.dp))
         Row(
@@ -78,14 +82,14 @@ fun BottomContainer(
             IconBox(
                 icon = R.drawable.ic_google,
                 onClick = {
-
+                    onEvent(RegisterEvent.LoginWithGoogleOnClick)
                 }
             )
             Spacer(modifier = Modifier.width(30.dp))
             IconBox(
                 icon = R.drawable.ic_facebook,
                 onClick = {
-
+                    onEvent(RegisterEvent.LoginWithFacebookOnClick)
                 }
             )
 
@@ -105,6 +109,9 @@ fun BottomContainer(
             Spacer(modifier = Modifier.width(4.dp))
             AppText(
                 text = stringResource(id = R.string.login),
+                modifier = Modifier.clickable {
+                    onEvent(RegisterEvent.LoginOnClick)
+                },
                 fontSize = 14.sp,
                 lineHeight = 21.sp,
                 color = Purple1,
@@ -151,7 +158,11 @@ fun BottomContainerPreview() {
         Surface(
             color = Color.White,
         ) {
-            BottomContainer()
+
+
+            BottomContainer(
+                onEvent = {}
+            )
         }
     }
 }

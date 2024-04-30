@@ -1,33 +1,30 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxColors
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -47,10 +44,15 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray2
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray3
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.previewRegisterUiState
 
 @Composable
 fun TopContainer(
     modifier: Modifier = Modifier,
+    uiState: RegisterUiState,
+    onEvent: (RegisterEvent) -> Unit,
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -76,16 +78,20 @@ fun TopContainer(
         )
         Spacer(modifier = Modifier.height(30.dp))
         AppOutlinedTextField(
-            value = "",
-            onValueChange = { },
+            value = uiState.fullName,
+            onValueChange = {
+                onEvent(RegisterEvent.UpdateFullName(it))
+            },
             placeholderText = stringResource(id = R.string.full_name),
             leadingIcon = R.drawable.ic_person_outlined,
             leadingIconOnClick = { }
         )
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
-            value = "",
-            onValueChange = { },
+            value = uiState.phoneNumber,
+            onValueChange = {
+                onEvent(RegisterEvent.UpdatePhoneNumber(it))
+            },
             placeholderText = stringResource(id = R.string.phone_number),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Phone,
@@ -95,31 +101,35 @@ fun TopContainer(
         )
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
-            value = "",
-            onValueChange = { },
+            value = uiState.email,
+            onValueChange = {
+                onEvent(RegisterEvent.UpdateEmail(it))
+            },
             placeholderText = stringResource(id = R.string.email),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
             ),
             leadingIcon = R.drawable.ic_mail_outlined,
-            leadingIconOnClick = { }
         )
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
-            value = "",
-            onValueChange = { },
+            value = uiState.password,
+            onValueChange = {
+                onEvent(RegisterEvent.UpdatePassword(it))
+            },
             placeholderText = stringResource(id = R.string.password),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            visualTransformation = if (true)
+            visualTransformation = if (uiState.passwordVisibility)
                 VisualTransformation.None
             else
                 PasswordVisualTransformation(),
             leadingIcon = R.drawable.ic_lock_outlined,
-            leadingIconOnClick = { },
             trailingIcon = R.drawable.ic_visibility_off_outlined,
-            trailingIconOnClick = { },
+            trailingIconOnClick = {
+                onEvent(RegisterEvent.UpdatePasswordVisibility(!uiState.passwordVisibility))
+            },
         )
         Spacer(modifier = Modifier.height(10.dp))
         Row(
@@ -127,9 +137,9 @@ fun TopContainer(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Checkbox(
-                checked = false,
+                checked = uiState.policyAndTermsAccepted,
                 onCheckedChange = {
-
+                    onEvent(RegisterEvent.UpdatePolicyAndTermsCheck(it))
                 },
                 colors = CheckboxDefaults.colors().copy(
                     checkedBorderColor = Gray2,
@@ -249,7 +259,13 @@ fun TopContainerPreview() {
         Surface(
             color = Color.White
         ) {
-            TopContainer()
+            val uiState = remember {
+                previewRegisterUiState
+            }
+            TopContainer(
+                uiState = uiState,
+                onEvent = { }
+            )
         }
     }
 }

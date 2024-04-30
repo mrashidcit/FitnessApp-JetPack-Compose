@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -10,14 +10,21 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.previewRegisterUiState
 
 @Composable
-fun RegisterScreen1Content() {
+fun RegisterScreenContent(
+    uiState: RegisterUiState,
+    onEvent: (RegisterEvent) -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -29,9 +36,14 @@ fun RegisterScreen1Content() {
                 horizontal = 30.dp
             )
     ) {
-        TopContainer()
+        TopContainer(
+            uiState = uiState,
+            onEvent = onEvent,
+        )
         Spacer(modifier = Modifier.height(50.dp))
-        BottomContainer()
+        BottomContainer(
+            onEvent = onEvent
+        )
     }
 }
 
@@ -40,7 +52,13 @@ fun RegisterScreen1Content() {
 fun RegisterScreen1ContentPreview() {
     FitnessAppTheme {
         Surface {
-            RegisterScreen1Content()
+            val uiState = remember {
+                previewRegisterUiState
+            }
+            RegisterScreenContent(
+                uiState = uiState,
+                onEvent = {}
+            )
         }
     }
 }
