@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
@@ -44,9 +44,9 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray2
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray3
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterUiState
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.previewRegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterEvent
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.previewRegisterUiState
 
 @Composable
 fun TopContainer(
@@ -82,6 +82,7 @@ fun TopContainer(
             onValueChange = {
                 onEvent(RegisterEvent.UpdateFullName(it))
             },
+            singleLine = true,
             placeholderText = stringResource(id = R.string.full_name),
             leadingIcon = R.drawable.ic_person_outlined,
             leadingIconOnClick = { }
@@ -92,6 +93,7 @@ fun TopContainer(
             onValueChange = {
                 onEvent(RegisterEvent.UpdatePhoneNumber(it))
             },
+            singleLine = true,
             placeholderText = stringResource(id = R.string.phone_number),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Phone,
@@ -105,6 +107,7 @@ fun TopContainer(
             onValueChange = {
                 onEvent(RegisterEvent.UpdateEmail(it))
             },
+            singleLine = true,
             placeholderText = stringResource(id = R.string.email),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
@@ -117,6 +120,7 @@ fun TopContainer(
             onValueChange = {
                 onEvent(RegisterEvent.UpdatePassword(it))
             },
+            singleLine = true,
             placeholderText = stringResource(id = R.string.password),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
@@ -137,7 +141,7 @@ fun TopContainer(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Checkbox(
-                checked = uiState.policyAndTermsAccepted,
+                checked = uiState.policyAndTerms,
                 onCheckedChange = {
                     onEvent(RegisterEvent.UpdatePolicyAndTermsCheck(it))
                 },
@@ -190,6 +194,7 @@ private fun AppOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholderText: String = "",
+    singleLine: Boolean = false,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     @DrawableRes leadingIcon: Int? = null,
@@ -206,6 +211,7 @@ private fun AppOutlinedTextField(
                 color = Gray3,
                 shape = RoundedCornerShape(14.dp),
             ),
+        singleLine = singleLine,
         leadingIcon = {
             leadingIcon?.let {
                 Icon(

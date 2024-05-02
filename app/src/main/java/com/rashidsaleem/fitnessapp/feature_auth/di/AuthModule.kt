@@ -4,6 +4,7 @@ import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateEmail
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateFullName
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePassword
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePhoneNumber
+import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePolicyAndTerms
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateRegisterForm
 import dagger.Module
 import dagger.Provides
@@ -18,14 +19,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AuthModule {
 
-    @Provides
     @Singleton
+    @Provides
+    fun provideValidateFullName(): ValidateFullName {
+        return ValidateFullName()
+    }
+
+    @Singleton
+    @Provides
     fun provideValidateRegisterForm(): ValidateRegisterForm {
         return ValidateRegisterForm(
             validateFullName = ValidateFullName(),
             validatePhoneNumber = ValidatePhoneNumber(),
             validateEmail = ValidateEmail(),
-            validatePassword = ValidatePassword()
+            validatePassword = ValidatePassword(),
+            validatePolicyAndTerms = ValidatePolicyAndTerms(),
         )
     }
 }

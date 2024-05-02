@@ -3,18 +3,12 @@ package com.rashidsaleem.fitnessapp.core.presentation.baseScreen
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-
-@HiltViewModel
-open class BaseViewModel @Inject constructor(
-
-): ViewModel() {
+open class BaseViewModel: ViewModel() {
 
     private val _scope = viewModelScope
     private val _baseEventFlow = MutableSharedFlow<UiEvent>()

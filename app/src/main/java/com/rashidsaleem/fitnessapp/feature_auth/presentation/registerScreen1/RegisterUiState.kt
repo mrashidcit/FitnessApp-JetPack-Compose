@@ -1,11 +1,16 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1
 
 data class RegisterUiState(
     val fullName: String = "",
+    val fullNameError: String? = null,
     val phoneNumber: String = "",
+    val phoneNumberError: String? = null,
     val email: String = "",
+    val emailError: String? = null,
     val password: String = "",
-    val policyAndTermsAccepted: Boolean = false,
+    val passwordError: String? = null,
+    val policyAndTerms: Boolean = false,
+    val policyAndTermsError: String? = null,
     val passwordVisibility: Boolean = false,
 )
 
@@ -14,5 +19,5 @@ val previewRegisterUiState = RegisterUiState(
     phoneNumber = "+923023888798",
     email = "mrashidcit@gmail.com",
     password = "abc1234",
-    policyAndTermsAccepted = false,
+    policyAndTerms = false,
 )

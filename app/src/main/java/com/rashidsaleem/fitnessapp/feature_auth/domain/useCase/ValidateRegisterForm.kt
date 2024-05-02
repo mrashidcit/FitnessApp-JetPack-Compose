@@ -5,4 +5,5 @@ data class ValidateRegisterForm(
     val validatePhoneNumber: ValidatePhoneNumber,
     val validateEmail: ValidateEmail,
     val validatePassword: ValidatePassword,
+    val validatePolicyAndTerms: ValidatePolicyAndTerms,
 )

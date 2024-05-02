@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -34,7 +34,7 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray4
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Purple1
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterEvent
 
 @Composable
 fun BottomContainer(

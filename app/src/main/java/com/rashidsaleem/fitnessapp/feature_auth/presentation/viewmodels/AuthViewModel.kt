@@ -1,16 +1,20 @@
 package com.rashidsaleem.fitnessapp.feature_auth.presentation.viewmodels
 
 import com.rashidsaleem.fitnessapp.core.presentation.baseScreen.BaseViewModel
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.domain.models.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel: BaseViewModel() {
+class AuthViewModel @Inject constructor(
 
-    private val _registerScreen1UiState = MutableStateFlow(RegisterUiState())
-    val registerScreen1UiState = _registerScreen1UiState.asStateFlow()
+) : BaseViewModel() {
+
+    private var _userModel = UserModel()
+
+    fun updateUser(user: UserModel) {
+        _userModel = user
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1
 
 sealed class RegisterEvent {
     data class UpdateFullName(val value: String): RegisterEvent()

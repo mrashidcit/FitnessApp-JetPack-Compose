@@ -1,4 +1,4 @@
-package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.components
+package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -16,12 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterEvent
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.RegisterUiState
-import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen.previewRegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterEvent
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterUiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.previewRegisterUiState
 
 @Composable
-fun RegisterScreenContent(
+fun RegisterScreen1Content(
     uiState: RegisterUiState,
     onEvent: (RegisterEvent) -> Unit,
 ) {
@@ -55,7 +55,7 @@ fun RegisterScreen1ContentPreview() {
             val uiState = remember {
                 previewRegisterUiState
             }
-            RegisterScreenContent(
+            RegisterScreen1Content(
                 uiState = uiState,
                 onEvent = {}
             )

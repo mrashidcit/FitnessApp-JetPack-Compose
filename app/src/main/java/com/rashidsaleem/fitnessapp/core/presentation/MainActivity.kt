@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.rashidsaleem.fitnessapp.core.common.Routes
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.authNavigation
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterScreen1ViewModel
 import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboarding.OnboardingScreen
 import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.onboardingNavigation
 import com.rashidsaleem.fitnessapp.feature_onboarding.presentation.welcome.WelcomeScreen
@@ -23,6 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+//    val registerScreen1ViewModel: RegisterScreen1ViewModel = hiltViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

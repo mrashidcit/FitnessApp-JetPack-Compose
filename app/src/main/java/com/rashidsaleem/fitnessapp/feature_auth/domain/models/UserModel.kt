@@ -5,7 +5,7 @@ import java.util.Date
 
 data class UserModel(
     val fullName: String = "",
-    val phoneNo: String = "",
+    val phoneNumber: String = "",
     val email: String = "",
     val password: String = "",
     val gender: GenderEnum? = null,
