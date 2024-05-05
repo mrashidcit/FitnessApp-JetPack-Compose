@@ -10,11 +10,12 @@ class ValidateEmail {
             (!Patterns.EMAIL_ADDRESS.matcher(value).matches()) -> "That's not a valid email"
             else -> null
         }
-        return errorMessage?.let {
+        return if (errorMessage == null)
             ValidationResult(true)
-        } ?: ValidationResult(
-            successful = false,
-            errorMessage = errorMessage
-        )
+        else
+            ValidationResult(
+                successful = false,
+                errorMessage = errorMessage,
+            )
     }
 }

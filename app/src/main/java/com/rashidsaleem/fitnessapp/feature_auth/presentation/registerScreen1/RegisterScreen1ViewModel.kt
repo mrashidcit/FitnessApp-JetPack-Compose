@@ -22,24 +22,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterScreen1ViewModel @Inject constructor(
-//   private val validateForm: ValidateRegisterForm = ValidateRegisterForm(
-//      validateFullName = ValidateFullName(),
-//      validatePhoneNumber = ValidatePhoneNumber(),
-//      validateEmail = ValidateEmail(),
-//      validatePassword = ValidatePassword(),
-//      validatePolicyAndTerms = ValidatePolicyAndTerms(),
-//   )
-//   private val validateForm: ValidateRegisterForm
-//   private val validateFullName: ValidateFullName
+   private val validateForm: ValidateRegisterForm
 ) : ViewModel() {
 
-    private val validateForm: ValidateRegisterForm = ValidateRegisterForm(
-        validateFullName = ValidateFullName(),
-        validatePhoneNumber = ValidatePhoneNumber(),
-        validateEmail = ValidateEmail(),
-        validatePassword = ValidatePassword(),
-        validatePolicyAndTerms = ValidatePolicyAndTerms(),
-    )
+//    private val validateForm: ValidateRegisterForm = ValidateRegisterForm(
+//        validateFullName = ValidateFullName(),
+//        validatePhoneNumber = ValidatePhoneNumber(),
+//        validateEmail = ValidateEmail(),
+//        validatePassword = ValidatePassword(),
+//        validatePolicyAndTerms = ValidatePolicyAndTerms(),
+//    )
     private val _scope = viewModelScope
     private val _uiState = MutableStateFlow(RegisterUiState())
     val uiState = _uiState.asStateFlow()
@@ -140,7 +132,8 @@ class RegisterScreen1ViewModel @Inject constructor(
                fullNameError = fullNameResult.errorMessage,
                phoneNumberError = phoneNumberResult.errorMessage,
                emailError = emailResult.errorMessage,
-               passwordError = passwordResult.errorMessage
+               passwordError = passwordResult.errorMessage,
+               policyAndTermsError = policyAndTermsResult.errorMessage
             )
          }
          return@launch

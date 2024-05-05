@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -27,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -37,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppOutlinedTextField
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.BorderColor
@@ -83,10 +86,22 @@ fun TopContainer(
                 onEvent(RegisterEvent.UpdateFullName(it))
             },
             singleLine = true,
+            isError = (uiState.fullNameError != null),
             placeholderText = stringResource(id = R.string.full_name),
             leadingIcon = R.drawable.ic_person_outlined,
-            leadingIconOnClick = { }
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+            )
         )
+        uiState.fullNameError?.let {
+            AppText(
+                text = it,
+                color = Color.Red,
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 5.dp)
+            )
+        }
+
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
             value = uiState.phoneNumber,
@@ -94,13 +109,22 @@ fun TopContainer(
                 onEvent(RegisterEvent.UpdatePhoneNumber(it))
             },
             singleLine = true,
+            isError = (uiState.phoneNumberError != null),
             placeholderText = stringResource(id = R.string.phone_number),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Phone,
+                imeAction = ImeAction.Next,
             ),
             leadingIcon = R.drawable.ic_phone_outlined,
-            leadingIconOnClick = { }
         )
+        uiState.phoneNumberError?.let {
+            AppText(
+                text = it,
+                color = Color.Red,
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 5.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
             value = uiState.email,
@@ -108,12 +132,22 @@ fun TopContainer(
                 onEvent(RegisterEvent.UpdateEmail(it))
             },
             singleLine = true,
+            isError = (uiState.emailError != null),
             placeholderText = stringResource(id = R.string.email),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next,
             ),
             leadingIcon = R.drawable.ic_mail_outlined,
         )
+        uiState.emailError?.let {
+            AppText(
+                text = it,
+                color = Color.Red,
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 5.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(15.dp))
         AppOutlinedTextField(
             value = uiState.password,
@@ -121,9 +155,11 @@ fun TopContainer(
                 onEvent(RegisterEvent.UpdatePassword(it))
             },
             singleLine = true,
+            isError = (uiState.passwordError != null),
             placeholderText = stringResource(id = R.string.password),
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done,
             ),
             visualTransformation = if (uiState.passwordVisibility)
                 VisualTransformation.None
@@ -135,6 +171,14 @@ fun TopContainer(
                 onEvent(RegisterEvent.UpdatePasswordVisibility(!uiState.passwordVisibility))
             },
         )
+        uiState.passwordError?.let {
+            AppText(
+                text = it,
+                color = Color.Red,
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 5.dp)
+            )
+        }
         Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -182,81 +226,20 @@ fun TopContainer(
                     lineHeight = 15.sp,
                 )
             }
-
+        }
+        uiState.policyAndTermsError?.let {
+            AppText(
+                text = it,
+                color = Color.Red,
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 14.dp)
+            )
         }
 
 
     }
 }
 
-@Composable
-private fun AppOutlinedTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    placeholderText: String = "",
-    singleLine: Boolean = false,
-    visualTransformation: VisualTransformation = VisualTransformation.None,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    @DrawableRes leadingIcon: Int? = null,
-    leadingIconOnClick: (() -> Unit)? = null,
-    @DrawableRes trailingIcon: Int? = null,
-    trailingIconOnClick: (() -> Unit)? = null,
-) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                color = Gray3,
-                shape = RoundedCornerShape(14.dp),
-            ),
-        singleLine = singleLine,
-        leadingIcon = {
-            leadingIcon?.let {
-                Icon(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    tint = Gray1,
-                    modifier = Modifier
-                        .size(18.dp)
-                        .clickable {
-                            leadingIconOnClick?.invoke()
-                        }
-                )
-            }
-        },
-        trailingIcon = {
-            trailingIcon?.let {
-                Icon(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    tint = Gray1,
-                    modifier = Modifier
-                        .size(18.dp)
-                        .clickable {
-                            trailingIconOnClick?.invoke()
-                        }
-                )
-            }
-        },
-        placeholder = {
-            AppText(
-                text = placeholderText,
-                color = Gray2,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal,
-                lineHeight = 18.sp,
-            )
-        },
-        shape = RoundedCornerShape(14.dp),
-        colors = OutlinedTextFieldDefaults.colors(
-            unfocusedBorderColor = BorderColor,
-        ),
-        visualTransformation = visualTransformation,
-        keyboardOptions = keyboardOptions,
-    )
-}
 
 @Preview
 @Composable
@@ -266,7 +249,9 @@ fun TopContainerPreview() {
             color = Color.White
         ) {
             val uiState = remember {
-                previewRegisterUiState
+                previewRegisterUiState.copy(
+                    policyAndTermsError = "Please Accept Privacy"
+                )
             }
             TopContainer(
                 uiState = uiState,
