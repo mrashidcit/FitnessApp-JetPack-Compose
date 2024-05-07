@@ -15,6 +15,7 @@ val Gray1 = Color(0xFFB6B4C2)
 val Gray2 = Color(0xFFADA4A5)
 val Gray3 = Color(0xFFF7F8F8)
 val Gray4 = Color(0xFFDDDADA)
+val Gray5 = Color(0xFF7B6F72)
 val Blue1 = Color(0xFF6B50F6)
 val Purple = Color(0xFFC150F6)
 val Purple1 = Color(0xFFEEA4CE)
@@ -24,6 +25,7 @@ val LogoLinear = listOf<Color>(Blue1, Purple2)
 
 val Black1 = Color(0xFF1D1617)
 
+// Component Colors
 val BorderColor = Gray3
 
 

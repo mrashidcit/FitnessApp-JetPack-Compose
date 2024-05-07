@@ -31,6 +31,6 @@ fun NavGraphBuilder.authNavigation(navController: NavHostController) {
 
     composable(Routes.REGISTER_SCREEN_2) {
 
-        RegisterScreen2()
+//        RegisterScreen2()
     }
 }

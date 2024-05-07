@@ -26,6 +26,7 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray3
 fun AppOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier.fillMaxWidth(),
     placeholderText: String = "",
     singleLine: Boolean = false,
     isError: Boolean = false,
@@ -39,8 +40,7 @@ fun AppOutlinedTextField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier
             .background(
                 color = Gray3,
                 shape = RoundedCornerShape(14.dp),
