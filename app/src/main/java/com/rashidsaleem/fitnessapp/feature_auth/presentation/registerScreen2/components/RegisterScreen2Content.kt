@@ -15,6 +15,8 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MenuDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppGradientButton
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
@@ -32,9 +36,17 @@ import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray2
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray5
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen2.RegisterScreen2Action
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen2.RegisterScreen2UiState
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen2.RegisterScreen2ViewModel
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen2.previewRegisterScreen2UiState
 
 @Composable
-fun RegisterScreen2Content() {
+fun RegisterScreen2Content(
+    uiState: RegisterScreen2UiState,
+    action: (RegisterScreen2Action) -> Unit,
+) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,97 +77,6 @@ fun RegisterScreen2Content() {
         )
         Spacer(modifier = Modifier.height(30.dp))
 
-//        Popup(
-//            alignment = Alignment.TopEnd
-//        ) {
-//            DropdownMenuItem(
-//                text = {
-//                    AppText(
-//                        modifier = Modifier.weight(1f),
-//                        text = stringResource(id = R.string.male),
-//                        fontSize = 12.sp,
-//                        lineHeight = 18.sp,
-//                        color = Gray2,
-//                    )
-//                },
-//                onClick = {
-//
-//                }
-//            )
-//            DropdownMenuItem(
-//                text = {
-//                    AppText(
-//                        modifier = Modifier.weight(1f),
-//                        text = stringResource(id = R.string.female),
-//                        fontSize = 12.sp,
-//                        lineHeight = 18.sp,
-//                        color = Gray2,
-//                    )
-//                },
-//                onClick = {
-//
-//                }
-//            )
-//        }
-
-        Box() {
-            DropdownMenu(
-                expanded = true,
-                onDismissRequest = { /*TODO*/ },
-                modifier = Modifier
-                    .background(
-                        color = Color.Yellow,
-                    )
-            ) {
-                DropdownMenuItem(
-                    text = {
-                        AppText(
-                            modifier = Modifier.weight(1f),
-                            text = stringResource(id = R.string.male),
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            color = Gray2,
-                        )
-                    },
-                    onClick = {
-
-                    },
-                    colors = MenuDefaults.itemColors().copy(
-                        textColor = Color.Black,
-                    ),
-                )
-                DropdownMenuItem(
-                    text = {
-                        AppText(
-                            modifier = Modifier.weight(1f),
-                            text = stringResource(id = R.string.female),
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            color = Gray2,
-                        )
-                    },
-                    onClick = {
-
-                    }
-                )
-                DropdownMenuItem(
-                    text = {
-                        AppText(
-                            modifier = Modifier.weight(1f),
-                            text = stringResource(id = R.string.other),
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                            color = Gray2,
-                        )
-                    },
-                    onClick = {
-
-                    }
-                )
-
-            }
-        }
-
 
 
         Column(
@@ -164,7 +85,10 @@ fun RegisterScreen2Content() {
                 .padding(start = 30.dp, end = 50.dp)
             ,
         ) {
-            InputFieldsContainer()
+            InputFieldsContainer(
+                uiState = uiState,
+                action = action
+            )
         }
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -176,7 +100,7 @@ fun RegisterScreen2Content() {
                 .padding(horizontal = 40.dp)
             ,
         ) {
-
+            action(RegisterScreen2Action.NextOnClick)
         }
         Spacer(modifier = Modifier.height(40.dp))
 
@@ -193,7 +117,12 @@ fun RegisterScreen2Content() {
 @Composable
 fun RegisterScreen2ContentPreview() {
     FitnessAppTheme {
-        RegisterScreen2Content()
+        val uiState = previewRegisterScreen2UiState
+
+        RegisterScreen2Content(
+            uiState = uiState,
+            action = { }
+        )
     }
 }
 

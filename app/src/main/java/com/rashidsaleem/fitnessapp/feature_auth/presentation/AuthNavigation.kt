@@ -11,6 +11,7 @@ import com.rashidsaleem.fitnessapp.core.common.Routes
 import com.rashidsaleem.fitnessapp.core.presentation.sharedViewModel
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterScreen1
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen2.RegisterScreen2
+import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen3.RegisterScreen3
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.viewmodels.AuthViewModel
 
 fun NavGraphBuilder.authNavigation(navController: NavHostController) {
@@ -31,6 +32,17 @@ fun NavGraphBuilder.authNavigation(navController: NavHostController) {
 
     composable(Routes.REGISTER_SCREEN_2) {
 
-//        RegisterScreen2()
+        RegisterScreen2(
+            navigateNext = { route, params ->
+                navController.navigate(route)
+            },
+            navigateBack = {
+
+            }
+        )
+    }
+
+    composable(Routes.REGISTER_SCREEN_3) {
+        RegisterScreen3()
     }
 }

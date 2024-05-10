@@ -4,10 +4,17 @@ import com.rashidsaleem.fitnessapp.core.common.enums.GenderEnum
 import java.util.Date
 
 data class RegisterScreen2UiState(
-    val genderEnum: GenderEnum? = null,
+    val gender: GenderEnum? = null,
     val dateOfBirth: Date? = null,
-    val weight: Float = 0.0f,
-    val height: Float = 0.0f,
+    val weight: String = "",
+    val height: String = "",
     val showGenderMenu: Boolean = false,
     val showDateOfBirthDatePicker: Boolean = false,
-)
+) {
+    fun getGenderLabel() : String {
+        if (gender == null) return "Choose Gender"
+        return gender.name
+    }
+}
+
+val previewRegisterScreen2UiState = RegisterScreen2UiState()

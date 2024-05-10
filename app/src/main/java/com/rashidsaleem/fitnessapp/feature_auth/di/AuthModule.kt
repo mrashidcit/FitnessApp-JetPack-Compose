@@ -5,6 +5,7 @@ import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateFullName
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePassword
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePhoneNumber
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidatePolicyAndTerms
+import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateRegister2Form
 import com.rashidsaleem.fitnessapp.feature_auth.domain.useCase.ValidateRegisterForm
 import dagger.Module
 import dagger.Provides
@@ -36,4 +37,6 @@ object AuthModule {
             validatePolicyAndTerms = ValidatePolicyAndTerms(),
         )
     }
+
+
 }

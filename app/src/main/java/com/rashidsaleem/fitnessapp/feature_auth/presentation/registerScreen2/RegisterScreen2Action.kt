@@ -6,11 +6,10 @@ import java.util.Date
 sealed class RegisterScreen2Action {
     data class ShowGenderMenu(val value: Boolean): RegisterScreen2Action()
     data class ShowDateOfBirthDatePicker(val value: Boolean): RegisterScreen2Action()
+    data class SetGender(val value: GenderEnum): RegisterScreen2Action()
+    data class SetDateOfBirth(val value: Date): RegisterScreen2Action()
+    data class SetWeight(val value: String): RegisterScreen2Action()
+    data class SetHeight(val value: String): RegisterScreen2Action()
+    data object NextOnClick: RegisterScreen2Action()
 
-    data class NextOnClick(
-        val gender: GenderEnum,
-        val dateOfBirth: Date,
-        val weight: Float,
-        val height: Float,
-    ): RegisterScreen2Action()
 }

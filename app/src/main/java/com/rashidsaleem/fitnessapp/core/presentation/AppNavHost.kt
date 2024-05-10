@@ -18,6 +18,7 @@ fun AppNavHost(navController: NavHostController) {
         navController = navController,
 //        startDestination = Routes.WELCOME
         startDestination = Routes.REGISTER_SCREEN_1
+//        startDestination = Routes.REGISTER_SCREEN_2
     ) {
 
         onboardingNavigation(
