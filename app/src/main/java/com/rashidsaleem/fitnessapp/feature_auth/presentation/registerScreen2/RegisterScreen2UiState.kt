@@ -10,6 +10,7 @@ data class RegisterScreen2UiState(
     val height: String = "",
     val showGenderMenu: Boolean = false,
     val showDateOfBirthDatePicker: Boolean = false,
+    val validationErrorMessage: String? = null,
 ) {
     fun getGenderLabel() : String {
         if (gender == null) return "Choose Gender"
