@@ -1,29 +1,20 @@
 package com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.components
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -41,12 +32,10 @@ import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppOutlinedTextField
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
-import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.BorderColor
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
-import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray2
-import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray3
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterEvent
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.RegisterUiState
 import com.rashidsaleem.fitnessapp.feature_auth.presentation.registerScreen1.previewRegisterUiState
@@ -64,19 +53,27 @@ fun TopContainer(
         Spacer(modifier = Modifier.height(20.dp))
         AppText(
             text = stringResource(id = R.string.hey_there),
-            fontSize = 16.sp,
-            lineHeight = 24.sp,
+            textFont = AppTextDefaults.textFont.copy(
+                size = 16.sp,
+                weight = FontWeight.Normal,
+            ),
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                lineHeight = 24.sp,
+            ),
             color = Black1,
-            fontWeight = FontWeight.Normal,
             textAlign = TextAlign.Center,
         )
         Spacer(modifier = Modifier.height(5.dp))
         AppText(
             text = stringResource(id = R.string.create_an_account),
-            fontSize = 20.sp,
-            lineHeight = 30.sp,
+            textFont = AppTextDefaults.textFont.copy(
+                size = 20.sp,
+                weight = FontWeight.Bold,
+            ),
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                lineHeight = 30.sp,
+            ),
             color = Black1,
-            fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
         )
         Spacer(modifier = Modifier.height(30.dp))
@@ -222,8 +219,12 @@ fun TopContainer(
                         }
                     },
                     color = Gray2,
-                    fontSize = 12.sp,
-                    lineHeight = 15.sp,
+                    textFont = AppTextDefaults.textFont.copy(
+                        size = 12.sp,
+                    ),
+                    textLineInfo = AppTextDefaults.textLineInfo.copy(
+                        lineHeight = 15.sp,
+                    ),
                 )
             }
         }

@@ -14,9 +14,9 @@ import androidx.compose.ui.unit.TextUnit
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.poppinsFontFamily
 
 data class TextFont(
-    val fontWeight: FontWeight = FontWeight.Normal,
-    val fontFamily: FontFamily? = poppinsFontFamily,
-    val fontSize: TextUnit = TextUnit.Unspecified,
+    val weight: FontWeight = FontWeight.Normal,
+    val family: FontFamily? = poppinsFontFamily,
+    val size: TextUnit = TextUnit.Unspecified,
 )
 
 data class TextLineInfo(
@@ -44,9 +44,9 @@ fun AppText(
     Text(
         text = text,
         modifier = modifier,
-        fontFamily = textFont.fontFamily,
-        fontWeight = textFont.fontWeight,
-        fontSize = textFont.fontSize,
+        fontFamily = textFont.family,
+        fontWeight = textFont.weight,
+        fontSize = textFont.size,
         color = color,
         lineHeight = textLineInfo.lineHeight,
         maxLines = textLineInfo.maxLines,
@@ -70,9 +70,9 @@ fun AppText(
     Text(
         text = text,
         modifier = modifier,
-        fontFamily = textFont.fontFamily,
-        fontWeight = textFont.fontWeight,
-        fontSize = textFont.fontSize,
+        fontFamily = textFont.family,
+        fontWeight = textFont.weight,
+        fontSize = textFont.size,
         color = color,
         lineHeight = textLineInfo.lineHeight,
         maxLines = textLineInfo.maxLines,

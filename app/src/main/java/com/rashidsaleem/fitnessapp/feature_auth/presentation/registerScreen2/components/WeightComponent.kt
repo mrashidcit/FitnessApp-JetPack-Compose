@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppOutlinedTextField
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.PurpleLinear
 
 @Composable
@@ -66,9 +67,13 @@ fun WeightComponent(
             AppText(
                 text = stringResource(id = R.string.kg).uppercase(),
                 modifier = Modifier.align(Alignment.Center),
-                fontWeight = FontWeight.Medium,
-                fontSize = 12.sp,
-                lineHeight = 18.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 12.sp,
+                    weight = FontWeight.Medium,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 18.sp,
+                ),
                 color = Color.White,
             )
         }

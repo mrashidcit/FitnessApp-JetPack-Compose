@@ -45,6 +45,7 @@ import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.common.enums.GenderEnum
 import com.rashidsaleem.fitnessapp.core.common.util.DateTimeUtil
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.BorderColor
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray2
@@ -96,8 +97,12 @@ fun InputFieldsContainer(
             AppText(
                 modifier = Modifier.weight(1f),
                 text = uiState.getGenderLabel(),
-                fontSize = 12.sp,
-                lineHeight = 18.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 12.sp,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 18.sp,
+                ),
                 color = Gray2,
             )
             Icon(
@@ -121,8 +126,12 @@ fun InputFieldsContainer(
                     AppText(
                         modifier = Modifier.weight(1f),
                         text = stringResource(id = R.string.male),
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
+                        textFont = AppTextDefaults.textFont.copy(
+                            size = 12.sp,
+                        ),
+                        textLineInfo = AppTextDefaults.textLineInfo.copy(
+                            lineHeight = 18.sp,
+                        ),
                         color = Gray2,
                     )
                 },
@@ -143,8 +152,12 @@ fun InputFieldsContainer(
                     AppText(
                         modifier = Modifier.weight(1f),
                         text = stringResource(id = R.string.female),
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
+                        textFont = AppTextDefaults.textFont.copy(
+                            size = 12.sp,
+                        ),
+                        textLineInfo = AppTextDefaults.textLineInfo.copy(
+                            lineHeight = 18.sp,
+                        ),
                         color = Gray2,
                     )
                 },
@@ -162,8 +175,12 @@ fun InputFieldsContainer(
                     AppText(
                         modifier = Modifier.weight(1f),
                         text = stringResource(id = R.string.other),
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
+                        textFont = AppTextDefaults.textFont.copy(
+                            size = 12.sp,
+                        ),
+                        textLineInfo = AppTextDefaults.textLineInfo.copy(
+                            lineHeight = 18.sp,
+                        ),
                         color = Gray2,
                     )
                 },
@@ -215,8 +232,12 @@ fun InputFieldsContainer(
                 stringResource(id = R.string.date_of_birth)
             else
                 DateTimeUtil.toString(uiState.dateOfBirth),
-            fontSize = 12.sp,
-            lineHeight = 18.sp,
+            textFont = AppTextDefaults.textFont.copy(
+                size = 12.sp,
+            ),
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                lineHeight = 18.sp,
+            ),
             color = Gray2,
         )
     }
@@ -248,7 +269,7 @@ fun InputFieldsContainer(
                             datePickerState
                                 .selectedDateMillis
                                 ?.let {
-                                    val date = Date(it);
+                                    val date = Date(it)
                                     action(RegisterScreen2Action.SetDateOfBirth(date))
                                 }
                             showDatePicker = false

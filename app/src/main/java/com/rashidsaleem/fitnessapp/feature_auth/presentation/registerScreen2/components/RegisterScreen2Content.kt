@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppGradientButton
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray5
@@ -54,16 +55,24 @@ fun RegisterScreen2Content(
         Spacer(modifier = Modifier.height(30.dp))
         AppText(
             text = stringResource(id = R.string.lets_complete_your_profile),
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            lineHeight = 30.sp,
+            textFont = AppTextDefaults.textFont.copy(
+                size = 20.sp,
+                weight = FontWeight.Bold,
+            ),
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                lineHeight = 30.sp,
+            ),
             color = Black1
         )
         Spacer(modifier = Modifier.height(5.dp))
         AppText(
             text = stringResource(id = R.string.it_will_help_us_to_know_more_about_you),
-            fontSize = 12.sp,
-            lineHeight = 18.sp,
+            textFont = AppTextDefaults.textFont.copy(
+                size = 12.sp,
+            ),
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                lineHeight = 18.sp,
+            ),
             color = Gray5,
         )
         Spacer(modifier = Modifier.height(30.dp))
@@ -85,7 +94,9 @@ fun RegisterScreen2Content(
         Spacer(modifier = Modifier.height(10.dp))
         AppText(
             text = uiState.validationErrorMessage ?: "",
-            maxLines = 1,
+            textLineInfo = AppTextDefaults.textLineInfo.copy(
+                maxLines = 1,
+            ),
             overflow = TextOverflow.Ellipsis,
             color = MaterialTheme.colorScheme.error
         )

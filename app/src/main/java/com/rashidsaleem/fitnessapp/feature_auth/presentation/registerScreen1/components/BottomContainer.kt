@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppGradientButton
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray4
@@ -42,7 +43,7 @@ fun BottomContainer(
     onEvent: (RegisterEvent) -> Unit,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
     ) {
         AppGradientButton(
@@ -64,8 +65,12 @@ fun BottomContainer(
             AppText(
                 text = stringResource(id = R.string.or),
                 modifier = Modifier.padding(horizontal = 10.dp),
-                fontSize = 12.sp,
-                lineHeight = 18.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 12.sp,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 18.sp,
+                ),
                 color = Black1,
             )
             HorizontalDivider(
@@ -102,8 +107,12 @@ fun BottomContainer(
         ) {
             AppText(
                 text = stringResource(id = R.string.already_have_an_account),
-                fontSize = 14.sp,
-                lineHeight = 21.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 14.sp,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 21.sp,
+                ),
                 color = Black1,
             )
             Spacer(modifier = Modifier.width(4.dp))
@@ -112,8 +121,12 @@ fun BottomContainer(
                 modifier = Modifier.clickable {
                     onEvent(RegisterEvent.LoginOnClick)
                 },
-                fontSize = 14.sp,
-                lineHeight = 21.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 14.sp,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 21.sp,
+                ),
                 color = Purple1,
             )
         }

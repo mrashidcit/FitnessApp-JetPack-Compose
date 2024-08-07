@@ -83,9 +83,13 @@ fun AppOutlinedTextField(
             AppText(
                 text = placeholderText,
                 color = Gray2,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal,
-                lineHeight = 18.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 12.sp,
+                    weight = FontWeight.Normal,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 18.sp,
+                )
             )
         },
         shape = RoundedCornerShape(14.dp),

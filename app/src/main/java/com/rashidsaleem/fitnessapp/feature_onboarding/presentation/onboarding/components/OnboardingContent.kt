@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rashidsaleem.fitnessapp.R
 import com.rashidsaleem.fitnessapp.core.presentation.components.AppText
+import com.rashidsaleem.fitnessapp.core.presentation.components.AppTextDefaults
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Black1
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.FitnessAppTheme
 import com.rashidsaleem.fitnessapp.core.presentation.ui.theme.Gray1
@@ -53,18 +54,25 @@ fun OnboardingContent(
                 modifier = Modifier.padding(horizontal = 30.dp),
                 text = stringResource(id = uiState.title),
                 color = Black1,
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                lineHeight = 36.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 24.sp,
+                    weight = FontWeight.Bold,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 36.sp,
+                ),
             )
             Spacer(modifier = Modifier.height(15.dp))
             AppText(
                 modifier = Modifier.padding(horizontal = 30.dp),
                 text = stringResource(id = uiState.description),
                 color = Gray1,
-                fontWeight = FontWeight.Normal,
-                fontSize = 14.sp,
-                lineHeight = 21.sp,
+                textFont = AppTextDefaults.textFont.copy(
+                    size = 14.sp,
+                ),
+                textLineInfo = AppTextDefaults.textLineInfo.copy(
+                    lineHeight = 21.sp,
+                ),
             )
         }
 
