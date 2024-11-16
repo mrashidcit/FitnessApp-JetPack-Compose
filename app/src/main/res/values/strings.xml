@@ -10,6 +10,9 @@
     <string name="lets_start_a_healthy_lifestyle_with_us">Let\'s start a healthy lifestyle with us, we can determine your diet every day. healthy eating is fun</string>
     <string name="improve_sleep_quality">Improve Sleep Quality</string>
     <string name="improve_the_quality_of_your_sleep_with_us">Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning</string>
+
+
+    <!-- Register   -->
     <string name="hey_there">Hey there,</string>
     <string name="create_an_account">Create an Account</string>
     <string name="full_name">Full Name</string>
@@ -38,7 +41,11 @@
     <string name="other">Other</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-    
+    <string name="what_is_your_goal">What is your goal?</string>
+    <string name="it_will_help_us_to_choose_a_best_program">It will help us to choose a best program for you</string>
+    <string name="improve_shape">Improve Shape</string>
+    <string name="i_have_a_low_amount_of_body_fat_and_need">I have a low amount of body fat and need / want to build more muscle</string>
+
     <!-- Error Messages   -->
     <string name="please_select_gender">Please select Gender</string>
     <string name="please_fill_all_data">Please Fill All Data</string>

@@ -1,11 +1,13 @@
 package com.rashidsaleem.fitnessapp.core.presentation.components
 
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -38,6 +40,7 @@ fun AppText(
     textFont: TextFont = AppTextDefaults.textFont,
     overflow: TextOverflow = TextOverflow.Clip,
     textLineInfo: TextLineInfo = AppTextDefaults.textLineInfo,
+    style: TextStyle = LocalTextStyle.current,
     textAlign: TextAlign? = null,
 ) {
 
@@ -47,6 +50,7 @@ fun AppText(
         fontFamily = textFont.family,
         fontWeight = textFont.weight,
         fontSize = textFont.size,
+        style = style,
         color = color,
         lineHeight = textLineInfo.lineHeight,
         maxLines = textLineInfo.maxLines,
